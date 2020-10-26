@@ -1,6 +1,10 @@
 FROM test.cargo.io/system-tenant_fjg-test/openjdk:8-jdk-alpine
-ENV LANG en_US.UTF-8 ENV LANGUAGE en_US:en ENV LC_ALL en_US.UTF-8 ENV TZ=Asia/Shanghai
+ENV LANG en_US.UTF-8 
+ENV LANGUAGE en_US:en 
+ENV LC_ALL en_US.UTF-8 
+ENV TZ=Asia/Shanghai
 RUN mkdir /app
 WORKDIR /app
-COPY target/polls-0.0.1-SNAPSHOT.jar /app/polls.jar EXPOSE 8080
+COPY target/polls-0.0.1-SNAPSHOT.jar /app/polls.jar 
+EXPOSE 8080
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "- jar","/app/polls.jar"]
